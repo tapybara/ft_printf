@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/01/30 23:41:26 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/03 22:37:02 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static t_print	*init_tab(t_print *tab)
 int	ft_printf(const char *format, ...)
 {
 	t_print	*tab;
-	size_t	i;
-	ssize_t	ret;
+	int	i;
+	int	ret;
 
 	tab = (t_print *)malloc(sizeof(t_print));
 	if (!tab)
@@ -46,38 +46,40 @@ int	ft_printf(const char *format, ...)
 		if (format[i] != '%')
 			ret += write(1, &format[i++], sizeof(char));
 		else
-			return (0);
-			// i = eval_format(tab, format, i + 1);
+			i = eval_start(tab, format, i + 1);
 	}
 	va_end(tab->args);
 	ret += tab->tl;
 	free (tab);
-	return ((int)ret);
+	return (ret);
 }
 
 #include <stdio.h>
 
 int main(void)
 {
-	printf("abcde\n");	//Non args
-	ft_printf("abcde");	//Non args
-	// printf("%d", 12345);
-	// ft_printf("%d", 12345);
-	// printf("%c", '0');
-	// ft_printf("%c", '0');
-	// printf("%s", "string");
-	// ft_printf("%s", "string");
+	int res;
+	char	c = 'c';
+	char	s[] = "strings";
+	int	num = 42;
+	unsigned int	unum = 123;
+
+	res = ft_printf("abcde");	//Non args
+	printf("\t:%d\n", res);
+	res = ft_printf("%c", c);
+	printf("\t:%d\n", res);
+	res = ft_printf("%s", s);
+	printf("\t:%d\n", res);
+	res = ft_printf("%p", s);
+	printf("\t:%d\n", res);
+	res = ft_printf("%d", num);
+	printf("\t:%d\n", res);
+	res = ft_printf("%i", num);
+	printf("\t:%d\n", res);
+	res = ft_printf("%u", unum);
+	printf("\t:%d\n", res);
+	res = ft_printf("%x", 0xff);
+	printf("\t:%d\n", res);
+	res = ft_printf("%%");
+	printf("\t:%d\n", res);
 }
-
-/*
-%[Flag][Min Field Width].[Precision][length][Format]
-
-*Mandatory*
-	Format(変換子)	 -> [ cspdiuxX% ]
-	Flags			-> [ -0.* ]
-
-*Bonus*
-	`n`, `f`, `g`, `e`
-	`l`, `ll`, `h`, `hh`
-	`#`, ` `, `+`
-*/
