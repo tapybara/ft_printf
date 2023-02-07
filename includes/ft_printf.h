@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/01/30 23:18:20 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/07 23:43:05 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,17 @@ typedef struct s_print
 	int		perc;
 	int		sp;
 }	t_print;
+
+int	eval_start(t_print *tab, const char *format, int i);
+int	eval_flags(t_print *tab, const char *format, int i);
+void	eval_convspec(t_print *tab, const char *format, int i);
+
+void	ft_print_char(t_print *tab, int c);
+void	ft_print_str(t_print *tab, char *str);
+void	ft_print_nbr(t_print *tab, int num);
+void	ft_print_hex(t_print *tab, unsigned int num, int is_upper);
+void	ft_recursive_print_hex(t_print *tab, unsigned int num, int is_upper);
+
+// void	ft_print_ptr(t_print *tab, void *p);
 
 #endif
