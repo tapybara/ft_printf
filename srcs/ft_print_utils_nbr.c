@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/07 23:11:07 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 21:10:45 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ void	ft_print_nbr(t_print *tab, int num)
 	free(nbr);
 }
 
-// void	ft_print_ptr(t_print *tab, void *p)
-// {
-// 	unsigned long	*ptr;
+void	ft_print_uint(t_print *tab, unsigned int num)
+{
+	char	*nbr;
 
-// 	if (!p)
-// 		return ;
-// 	ptr = (unsigned long)p;
-// 	ft_print_str(tab, "0x");
-	
-// }
+	nbr = ft_uitoa(num);
+	ft_print_str(tab, nbr);
+	free(nbr);
+}

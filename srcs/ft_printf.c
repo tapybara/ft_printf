@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/07 23:52:24 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 22:01:12 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,23 +148,41 @@ int main(void)
 {
 	int res;
 	char	c = 'C';
-	char	s[] = "strings";
-	int	num1 = 42;
-	int	num2 = 24;
-	unsigned int	unum = 123;
+	char	s1[] = "strings";
+	char	*s2 = NULL;
+	int	num1 = 32;
+	int	num2 = -32;
+	unsigned int	unum = 123456789;
 
-	res = ft_printf("FT  %c, %s, %d, %i", c, s, num1, num2);
+	printf("-------------------------------------------\n");
+	res = printf("ORG :%c,%s,%d,%i:", c, s1, num1, num2);
 	printf("\t=>%d\n", res);
-	res = printf("ORG %c, %s, %d, %i", c, s, num1, num2);
+	res = ft_printf("FT  :%c,%s,%d,%i:", c, s1, num1, num2);
 	printf("\t=>%d\n", res);
-	res = ft_printf("FT  %x", 0xff);
+	printf("-------------------------------------------\n");
+	res = printf("ORG :%s", s2);
 	printf("\t=>%d\n", res);
-	res = printf("ORG %x", 0xff);
+	res = ft_printf("FT  :%s", s2);
 	printf("\t=>%d\n", res);
-	res = ft_printf("FT  %p", s);
+	printf("-------------------------------------------\n");
+	res = printf("ORG :%x:%X:%x:%X:", num1, num1, num2, num2);
 	printf("\t=>%d\n", res);
-	res = ft_printf("FT  %u", unum);
+	res = ft_printf("FT  :%x:%X:%x:%X:", num1, num1, num2, num2);
 	printf("\t=>%d\n", res);
-	res = ft_printf("FT  %%");
+	printf("-------------------------------------------\n");
+	res = printf("ORG :%u:", unum);
 	printf("\t=>%d\n", res);
+	res = ft_printf("FT  :%u:", unum);
+	printf("\t=>%d\n", res);
+	printf("-------------------------------------------\n");
+	res = printf("ORG :%p:%p:", s1, NULL);
+	printf("\t=>%d\n", res);
+	res = ft_printf("FT  :%p:%p:", s1, NULL);
+	printf("\t=>%d\n", res);
+	printf("-------------------------------------------\n");
+	res = printf("ORG :%%:");
+	printf("\t=>%d\n", res);
+	res = ft_printf("FT  :%%:");
+	printf("\t=>%d\n", res);
+	printf("-------------------------------------------\n");
 }

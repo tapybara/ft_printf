@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 01:44:28 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/01/29 16:17:33 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 20:12:37 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+char	*ft_uitoa(unsigned int n);
+char	*ft_ultoa(unsigned long n);
 #endif

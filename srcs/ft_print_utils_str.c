@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:33:29 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/07 21:33:34 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 22:04:56 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_print_char(t_print *tab, int c)
 void	ft_print_str(t_print *tab, char *str)
 {
 	if (!str)
-		return ;
-	tab->tl += write(STDOUT_FILENO, str, ft_strlen(str));
+		ft_print_str(tab, "(null)");
+	else
+		tab->tl += write(STDOUT_FILENO, str, ft_strlen(str));
 }

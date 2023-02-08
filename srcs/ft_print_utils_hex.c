@@ -6,30 +6,41 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/07 23:42:13 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 22:07:30 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-void	ft_print_hex(t_print *tab, unsigned int num, int is_upper)
+void	ft_print_ptr(t_print *tab, void *p)
 {
-	if (!num)
-		return ;
-	if (is_upper == 1)
-		ft_print_str(tab, "0X");
-	else if (is_upper == 0)
-		ft_print_str(tab, "0x");
-	ft_recursive_print_hex(tab, num, is_upper);
+	unsigned long long	ptr;
+
+	ptr = (unsigned long long)p;
+	ft_print_str(tab, "0x");
+	ft_print_hex_ull(tab, ptr);
 }
 
-void	ft_recursive_print_hex(t_print *tab, unsigned int num, int is_upper)
+void	ft_print_hex_ull(t_print *tab, unsigned long long ptr)
+{
+	if (ptr >= 16)
+	{
+		ft_print_hex_ull(tab, ptr / 16);
+		ft_print_hex_ull(tab, ptr % 16);
+	}
+	else if (ptr >= 10)
+		ft_print_char(tab, ((int)ptr - 10) + 'a');
+	else
+		ft_print_char(tab, (int)ptr + '0');
+}
+
+void	ft_print_hex(t_print *tab, unsigned int num, int is_upper)
 {
 	if (num >= 16)
 	{
-		ft_recursive_print_hex(tab, num / 16, is_upper);
-		ft_recursive_print_hex(tab, num % 16, is_upper);
+		ft_print_hex(tab, num / 16, is_upper);
+		ft_print_hex(tab, num % 16, is_upper);
 	}
 	else if (num >= 10)
 	{

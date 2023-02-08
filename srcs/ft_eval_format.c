@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/07 23:29:32 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 21:39:41 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,14 @@ void	eval_convspec(t_print *tab, const char *format, int i)
 		ft_print_str(tab, va_arg(tab->args, char *));
 	else if (format[i] == 'd' || format[i] == 'i')
 		ft_print_nbr(tab, va_arg(tab->args, int));
+	else if (format[i] == 'u')
+		ft_print_uint(tab, va_arg(tab->args, unsigned int));
 	else if (format[i] == 'x')
 		ft_print_hex(tab, va_arg(tab->args, unsigned int), 0);
 	else if (format[i] == 'X')
 		ft_print_hex(tab, va_arg(tab->args, unsigned int), 1);
 	else if (format[i] == 'p')
-		printf("p");
-		// ft_print_ptr(tab, va_arg(tab->args, void *));
-	else if (format[i] == 'u')
-		printf("u");
-		// ft_print_uint(tab, va_arg(tab->args, unsigned int));
+		ft_print_ptr(tab, va_arg(tab->args, void *));
 }
 
 // // Evaluation_Flag
