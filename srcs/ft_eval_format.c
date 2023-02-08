@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 22:18:47 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/09 00:21:24 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	eval_convspec(t_print *tab, const char *format, int i)
 		ft_print_ptr(tab, va_arg(tab->args, void *));
 }
 
-// // Evaluation_Flag
+// Evaluation_Flag
 int	eval_flags(t_print *tab, const char *format, int i)
 {
 	if (format[i] == '-')
@@ -46,14 +46,21 @@ int	eval_flags(t_print *tab, const char *format, int i)
 		tab->zero = 1;
 		i++;
 	}
-	else if (format[i] == '.')
+	return (i);
+}
+
+// Evaluation_Field_Width
+int	eval_field_width(t_print *tab, const char *format, int i)
+{
+	if (tab->dot)
+		return (i);
+	while (format[i] == '*' || ft_isdigit((int)format[i]))
+		if (format[i] == '*' && !tab->dot)
+		tab->width = va_arg(tab->args, int);
+	else if (ft_isdigit((int)format[i]))
 	{
-		tab->dot = 1;
-		i++;
-	}
-	else if (format[i] == '*')
-	{
-		i++;
+		tab->width *= 10;
+		tab->width += ft_atoi(format[i]);
 	}
 	return (i);
 }
@@ -61,12 +68,10 @@ int	eval_flags(t_print *tab, const char *format, int i)
 // eval_start(main)
 int	eval_start(t_print *tab, const char *format, int i)
 {
-	const char	*convert_spec;
-
-	CONVERT_SPEC = "cspdiuxX%%";
-	while (!ft_strchr(convert_spec, format[i]))
+	while (!ft_strchr(CONVERT_SPEC, format[i]))
 	{
 		i = eval_flags(tab, format, i);
+		// i = eval_field_width(tab, format, i);
 		// Function(Field Width)
 		// Function(Precision)
 		// Function(length)
@@ -75,16 +80,3 @@ int	eval_start(t_print *tab, const char *format, int i)
 	eval_convspec(tab, format, i);
 	return (++i);
 }
-
-/*
-%[Flag][Min Field Width].[Precision][length][Format]
-
-*Mandatory*
-	Format(変換子)	 -> [ cspdiuxX% ]
-	Flags			-> [ -0.* ]
-
-*Bonus*
-	`n`, `f`, `g`, `e`
-	`l`, `ll`, `h`, `hh`
-	`#`, ` `, `+`
-*/
