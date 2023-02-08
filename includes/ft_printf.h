@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 22:21:35 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 23:33:14 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 
 # include <stdarg.h>
 
+# define CONVERT_SPEC "cspdiuxX%%"
+# define HEXA_NUM 16
+
 typedef struct s_print
 {
 	va_list	args;
-	int		wdt;
-	int		prc;
-	int		zero;
-	int		dot;
 	int		dash;
+	int		zero;
+	int		star;
+	int		dot;
+	int		width;
 	int		tl;
-	int		sign;
-	int		is_zero;
-	int		perc;
-	int		sp;
 }	t_print;
 
 int		eval_start(t_print *tab, const char *format, int i);

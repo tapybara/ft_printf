@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 22:16:33 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 23:52:21 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,12 @@
 
 static t_print	*init_tab(t_print *tab)
 {
-	tab->wdt = 0;
-	tab->prc = 0;
-	tab->zero = 0;
-	tab->dot = 0;
-	tab->sign = 0;
-	tab->tl = 0;
-	tab->is_zero = 0;
 	tab->dash = 0;
-	tab->perc = 0;
-	tab->sp = 0;
+	tab->zero = 0;
+	tab->star = 0;
+	tab->dot = 0;
+	tab->width = 0;
+	tab->tl = 0;
 	return (tab);
 }
 

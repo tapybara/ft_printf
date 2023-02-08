@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 22:07:30 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 23:33:45 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	ft_print_ptr(t_print *tab, void *p)
 
 void	ft_print_hex_ull(t_print *tab, unsigned long long ptr)
 {
-	if (ptr >= 16)
+	if (ptr >= HEXA_NUM)
 	{
-		ft_print_hex_ull(tab, ptr / 16);
-		ft_print_hex_ull(tab, ptr % 16);
+		ft_print_hex_ull(tab, ptr / HEXA_NUM);
+		ft_print_hex_ull(tab, ptr % HEXA_NUM);
 	}
 	else if (ptr >= 10)
 		ft_print_char(tab, ((int)ptr - 10) + 'a');
@@ -37,10 +37,10 @@ void	ft_print_hex_ull(t_print *tab, unsigned long long ptr)
 
 void	ft_print_hex(t_print *tab, unsigned int num, int is_upper)
 {
-	if (num >= 16)
+	if (num >= HEXA_NUM)
 	{
-		ft_print_hex(tab, num / 16, is_upper);
-		ft_print_hex(tab, num % 16, is_upper);
+		ft_print_hex(tab, num / HEXA_NUM, is_upper);
+		ft_print_hex(tab, num % HEXA_NUM, is_upper);
 	}
 	else if (num >= 10)
 	{
