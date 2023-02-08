@@ -6,14 +6,14 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 21:49:25 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 22:21:35 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct s_print
 {
@@ -30,8 +30,8 @@ typedef struct s_print
 	int		sp;
 }	t_print;
 
-int	eval_start(t_print *tab, const char *format, int i);
-int	eval_flags(t_print *tab, const char *format, int i);
+int		eval_start(t_print *tab, const char *format, int i);
+int		eval_flags(t_print *tab, const char *format, int i);
 void	eval_convspec(t_print *tab, const char *format, int i);
 
 void	ft_print_char(t_print *tab, int c);

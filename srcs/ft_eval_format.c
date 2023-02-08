@@ -6,14 +6,12 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 21:39:41 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 22:18:47 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
-
-# include <stdio.h>
 
 void	eval_convspec(t_print *tab, const char *format, int i)
 {
@@ -63,22 +61,20 @@ int	eval_flags(t_print *tab, const char *format, int i)
 // eval_start(main)
 int	eval_start(t_print *tab, const char *format, int i)
 {
-	const char *CONVERT_SPEC;
+	const char	*convert_spec;
 
 	CONVERT_SPEC = "cspdiuxX%%";
-	while (!ft_strchr(CONVERT_SPEC, format[i]))
+	while (!ft_strchr(convert_spec, format[i]))
 	{
 		i = eval_flags(tab, format, i);
 		// Function(Field Width)
 		// Function(Precision)
 		// Function(length)
-
 		// 上記4種類に掛からない文字列のパターン有り得る？
 	}
 	eval_convspec(tab, format, i);
 	return (++i);
 }
-
 
 /*
 %[Flag][Min Field Width].[Precision][length][Format]

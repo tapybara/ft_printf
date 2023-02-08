@@ -6,10 +6,9 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:14:46 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 20:15:41 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/08 22:19:52 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
