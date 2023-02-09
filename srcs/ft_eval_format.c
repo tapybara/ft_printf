@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/09 00:21:24 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/09 22:00:24 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,48 +34,48 @@ void	eval_convspec(t_print *tab, const char *format, int i)
 }
 
 // Evaluation_Flag
-int	eval_flags(t_print *tab, const char *format, int i)
+void	eval_flags(t_print *tab, const char *format, int i)
 {
 	if (format[i] == '-')
-	{
 		tab->dash = 1;
-		i++;
-	}
-	else if (format[i] == '0')
-	{
+	else if (format[i] == '0' && !tab->width && !tab->dot)
 		tab->zero = 1;
-		i++;
-	}
-	return (i);
 }
 
 // Evaluation_Field_Width
-int	eval_field_width(t_print *tab, const char *format, int i)
+void	eval_width_and_precision(t_print *tab, const char *format, int i)
 {
-	if (tab->dot)
-		return (i);
-	while (format[i] == '*' || ft_isdigit((int)format[i]))
-		if (format[i] == '*' && !tab->dot)
-		tab->width = va_arg(tab->args, int);
-	else if (ft_isdigit((int)format[i]))
+	if (format[i] == '.')
+		tab->dot = 1;
+	if (!tab->dot)
 	{
-		tab->width *= 10;
-		tab->width += ft_atoi(format[i]);
+		if (format[i] == '*')
+			tab->width = va_arg(tab->args, int);
+		else if (ft_isdigit((int)format[i]))
+		{
+			tab->width *= 10;
+			tab->width += (format[i] - '0');
+		}
 	}
-	return (i);
+	else
+	{
+		if (format[i] == '*')
+			tab->prec = va_arg(tab->args, int);
+		else if (ft_isdigit((int)format[i]))
+		{
+			tab->prec *= 10;
+			tab->prec += (format[i] - '0');
+		}
+	}
 }
 
 // eval_start(main)
 int	eval_start(t_print *tab, const char *format, int i)
 {
-	while (!ft_strchr(CONVERT_SPEC, format[i]))
+	while (!ft_strchr(CONVERT_SPEC, format[++i]))
 	{
-		i = eval_flags(tab, format, i);
-		// i = eval_field_width(tab, format, i);
-		// Function(Field Width)
-		// Function(Precision)
-		// Function(length)
-		// 上記4種類に掛からない文字列のパターン有り得る？
+		eval_flags(tab, format, i);
+		eval_width_and_precision(tab, format, i);
 	}
 	eval_convspec(tab, format, i);
 	return (++i);

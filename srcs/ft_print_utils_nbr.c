@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 21:10:45 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/09 22:18:25 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,25 @@
 void	ft_print_nbr(t_print *tab, int num)
 {
 	char	*nbr;
+	int		margin;
 
 	nbr = ft_itoa(num);
-	ft_print_str(tab, nbr);
+	if (tab->width <= (int)ft_strlen(nbr))
+		ft_print_str(tab, nbr);
+	else
+	{
+		margin = tab->width - (int)ft_strlen(nbr);
+		if (tab->dash)
+		{
+			ft_print_str(tab, nbr);
+			fill_the_margin(tab, margin);
+		}
+		else
+		{
+			fill_the_margin(tab, margin);
+			ft_print_str(tab, nbr);
+		}
+	}
 	free(nbr);
 }
 

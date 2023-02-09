@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 23:33:14 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/09 22:09:44 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ typedef struct s_print
 	int		star;
 	int		dot;
 	int		width;
+	int		prec;
 	int		tl;
 }	t_print;
 
+int		ft_printf(const char *format, ...);
 int		eval_start(t_print *tab, const char *format, int i);
-int		eval_flags(t_print *tab, const char *format, int i);
+int		eval_start(t_print *tab, const char *format, int i);
+void	eval_flags(t_print *tab, const char *format, int i);
+void	eval_width_and_precision(t_print *tab, const char *format, int i);
 void	eval_convspec(t_print *tab, const char *format, int i);
 
 void	ft_print_char(t_print *tab, int c);
@@ -40,5 +44,7 @@ void	ft_print_uint(t_print *tab, unsigned int num);
 void	ft_print_ptr(t_print *tab, void *p);
 void	ft_print_hex_ull(t_print *tab, unsigned long long num);
 void	ft_print_hex(t_print *tab, unsigned int num, int is_upper);
+
+void	fill_the_margin(t_print *tab, int margin);
 
 #endif
