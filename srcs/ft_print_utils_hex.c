@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 23:33:45 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/11 23:22:10 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	ft_print_ptr(t_print *tab, void *p)
 	ft_print_hex_ull(tab, ptr);
 }
 
+void	ft_print_hex(t_print *tab, unsigned int num, int is_upper)
+{
+	ft_print_hex_ui(tab, num, is_upper);
+}
+
 void	ft_print_hex_ull(t_print *tab, unsigned long long ptr)
 {
 	if (ptr >= HEXA_NUM)
@@ -35,7 +40,7 @@ void	ft_print_hex_ull(t_print *tab, unsigned long long ptr)
 		ft_print_char(tab, (int)ptr + '0');
 }
 
-void	ft_print_hex(t_print *tab, unsigned int num, int is_upper)
+void	ft_print_hex_ui(t_print *tab, unsigned int num, int is_upper)
 {
 	if (num >= HEXA_NUM)
 	{
