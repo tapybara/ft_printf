@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultoa.c                                         :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 19:55:04 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/08 22:19:39 by okuyamataka      ###   ########.fr       */
+/*   Created: 2023/02/11 13:37:50 by okuyamataka       #+#    #+#             */
+/*   Updated: 2023/02/11 13:37:53 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	reverse_sort(char *str)
 	}
 }
 
-static size_t	get_size(unsigned long num)
+static size_t	get_size(long num)
 {
 	size_t	count;
 
@@ -42,7 +42,7 @@ static size_t	get_size(unsigned long num)
 	return (count + 1);
 }
 
-char	*ft_ultoa(unsigned long n)
+char	*ft_ltoa(long n)
 {
 	char	*str;
 	size_t	size;

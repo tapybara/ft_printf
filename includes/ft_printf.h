@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/09 22:09:44 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/11 21:30:19 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,17 @@
 typedef struct s_print
 {
 	va_list	args;
-	int		dash;
-	int		zero;
-	int		star;
-	int		dot;
-	int		width;
-	int		prec;
-	int		tl;
+	int	dash;
+	int	zero;
+	int	star;
+	int	dot;
+	int	width;
+	int	prec;
+	int	is_negative;
+	int	tl;
 }	t_print;
 
+void	init_tab(t_print *tab);
 int		ft_printf(const char *format, ...);
 int		eval_start(t_print *tab, const char *format, int i);
 int		eval_start(t_print *tab, const char *format, int i);
@@ -45,6 +47,6 @@ void	ft_print_ptr(t_print *tab, void *p);
 void	ft_print_hex_ull(t_print *tab, unsigned long long num);
 void	ft_print_hex(t_print *tab, unsigned int num, int is_upper);
 
-void	fill_the_margin(t_print *tab, int margin);
+void	fill_the_margin(t_print *tab, int len);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/09 22:00:24 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/10 00:20:05 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	eval_width_and_precision(t_print *tab, const char *format, int i)
 // eval_start(main)
 int	eval_start(t_print *tab, const char *format, int i)
 {
+	init_tab(tab);
 	while (!ft_strchr(CONVERT_SPEC, format[++i]))
 	{
 		eval_flags(tab, format, i);
