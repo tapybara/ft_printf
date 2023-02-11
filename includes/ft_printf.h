@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 00:21:34 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 03:20:54 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 
 # define CONVERT_SPEC "cspdiuxX%%"
-# define HEXA_NUM 16
+# define HEXA_BASE 16
 
 typedef struct s_print
 {
@@ -29,6 +29,7 @@ typedef struct s_print
 	int		width;
 	int		prec;
 	int		is_negative;
+	int		prefix;
 	int		tl;
 }	t_print;
 
@@ -43,13 +44,15 @@ void	eval_convspec(t_print *tab, const char *format, int i);
 void	ft_print_char(t_print *tab, int c);
 void	ft_print_str(t_print *tab, char *str);
 void	ft_print_nbr(t_print *tab, int num);
-void	ft_print_nbr_util(t_print *tab, char *nbr, int len);
+void	ft_print_str_with_flags(t_print *tab, char *str, int len);
+void	ft_print_base_with_flags(t_print *tab, unsigned long long num, int len, int is_upper);
 void	ft_print_uint(t_print *tab, unsigned int num);
 void	ft_print_ptr(t_print *tab, void *p);
 void	ft_print_hex(t_print *tab, unsigned int num, int is_upper);
-void	ft_print_hex_ull(t_print *tab, unsigned long long num);
-void	ft_print_hex_ui(t_print *tab, unsigned int num, int is_upper);
+void	ft_print_ptr_to_hex(t_print *tab, unsigned long long num);
+void	ft_print_ul_to_hex(t_print *tab, unsigned long long num, int is_upper);
 
+bool	is_empty_char_required(t_print *tab, bool num_zero);
 void	fill_the_margin(t_print *tab, int len);
 
 #endif
