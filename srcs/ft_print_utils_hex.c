@@ -6,84 +6,82 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 03:21:03 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 13:44:41 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-static int	count_base_digits(unsigned long long num, unsigned long long base)
-{
-	int	count;
-
-	count = 1;
-	while (num >= (unsigned long long)base)
-	{
-		num /= base;
-		count++;
-	}
-	return (count);
-}
-
-void	ft_print_ptr(t_print *tab, void *p)
-{
-	int	len;
-	unsigned long long	num;
-
-	tab->prefix = 1;
-	num = (unsigned long long)p;
-	len = count_base_digits((unsigned long long)num, HEXA_BASE);
-	len += 2;
-	if (tab->width <= len && tab->prec <= len)
-		ft_print_base_with_flags(tab, num, len, 0);
-	else
-		ft_print_base_with_flags(tab, num, len, 0);
-}
-
-void	ft_print_ptr_to_hex(t_print *tab, unsigned long long num)
-{
-	if (num >= HEXA_BASE)
-	{
-		ft_print_ptr_to_hex(tab, num / HEXA_BASE);
-		ft_print_ptr_to_hex(tab, num % HEXA_BASE);
-	}
-	else if (num >= 10)
-		ft_print_char(tab, ((int)num - 10) + 'a');
-	else
-		ft_print_char(tab, (int)num + '0');
-}
-
-void	ft_print_hex(t_print *tab, unsigned int num, int is_upper)
-{
-	int	len;
-
-	if (is_empty_char_required(tab, !num))
-		return ;
-	len = count_base_digits((unsigned long long)num, HEXA_BASE);
-	if (tab->width <= len && tab->prec <= len)
-		ft_print_ul_to_hex(tab, (unsigned long long)num, is_upper);
-	else
-		ft_print_base_with_flags(tab, (unsigned long long)num, len, is_upper);
-}
-
-void	ft_print_ul_to_hex(t_print *tab, unsigned long long num, int is_upper)
+static void	ft_print_hex_of_prefix(t_print *tab)
 {
 	if (tab->prefix)
-		ft_print_str(tab, "0x");
+	{
+		if (tab->is_upper)
+			ft_print_str(tab, "0x");
+		else
+			ft_print_str(tab, "0X");
+	}
+}
+
+void	ft_print_ul_to_hex(t_print *tab, unsigned long long num)
+{
 	if (num >= HEXA_BASE)
 	{
 		tab->prefix = 0;
-		ft_print_ul_to_hex(tab, num / HEXA_BASE, is_upper);
-		ft_print_ul_to_hex(tab, num % HEXA_BASE, is_upper);
+		ft_print_ul_to_hex(tab, num / HEXA_BASE);
+		ft_print_ul_to_hex(tab, num % HEXA_BASE);
 	}
 	else if (num >= 10)
 	{
-		if (is_upper)
+		if (tab->is_upper)
 			ft_print_char(tab, ((int)num - 10) + 'A');
 		else
 			ft_print_char(tab, ((int)num - 10) + 'a');
 	}
 	else
 		ft_print_char(tab, (int)num + '0');
+}
+
+void	ft_print_base_with_flags(t_print *tab, unsigned long long num)
+{
+	int	len;
+
+	len = count_base_digits(num, HEXA_BASE);
+	if (tab->prefix)
+		len += 2;
+	if (tab->prec >= len)
+	{
+		tab->prec -= len;
+		tab->width -= tab->prec;
+	}
+	if (!tab->dash)
+		fill_the_margin(tab, len);
+	else if (tab->is_negative)
+		ft_print_char(tab, '-');
+	while (tab->prec--)
+		ft_print_char(tab, '0');
+	ft_print_hex_of_prefix(tab);
+	ft_print_ul_to_hex(tab, num);
+	if (tab->dash)
+		fill_the_margin(tab, len);
+}
+
+void	ft_print_ptr(t_print *tab, void *p)
+{
+	unsigned long long	ullnum;
+
+	tab->prefix = 1;
+	ullnum = (unsigned long long)p;
+	ft_print_base_with_flags(tab, ullnum);
+}
+
+void	ft_print_hex(t_print *tab, unsigned int num)
+{
+	unsigned long long	ullnum;
+
+	if (is_empty_char_required(tab, !num))
+		return ;
+	ullnum = (unsigned long long)num;
+	ft_print_base_with_flags(tab, ullnum);
 }
