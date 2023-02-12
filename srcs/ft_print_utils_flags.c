@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:03:54 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 23:09:46 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 23:19:14 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	fill_the_margin(t_print *tab, int len)
 	int		margin;
 
 	margin = 0;
+	if (tab->is_negative || tab->plus || tab->space)
+		len++;
 	if (tab->width > len)
 		margin = tab->width - len;
 	if (!tab->dash && tab->zero)

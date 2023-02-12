@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 23:10:18 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 23:17:46 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,14 @@ void	ft_print_nbr(t_print *tab, int num)
 
 	if (is_empty_char_required(tab, !num))
 		return ;
-	nbr = ft_itoa(num);
-	len = (int)ft_strlen(nbr);
-	if (tab->width > len || tab->prec > len)
+	lnum = (long)num;
+	if (num < 0)
 	{
-		free(nbr);
-		lnum = (long)num;
-		if (num < 0)
-		{
-			tab->is_negative = 1;
-			lnum *= -1;
-		}
-		nbr = ft_ltoa(lnum);
+		tab->is_negative = 1;
+		lnum *= -1;
 	}
+	nbr = ft_ltoa(lnum);
+	len = (int)ft_strlen(nbr);
 	ft_print_nbr_with_flags(tab, nbr, len);
 	free(nbr);
 }
