@@ -6,12 +6,12 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:03:54 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 14:25:34 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:13:11 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 void	fill_the_margin(t_print *tab, int len)
 {

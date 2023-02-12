@@ -6,12 +6,12 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 14:47:56 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:13:15 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 void	eval_convspec(t_print *tab, const char *format, int i)
 {

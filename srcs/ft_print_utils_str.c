@@ -6,12 +6,12 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:33:29 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 15:33:20 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:12:58 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putchar(int c)
 {

@@ -6,12 +6,12 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 13:22:27 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:13:23 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 void	init_tab(t_print *tab)
 {

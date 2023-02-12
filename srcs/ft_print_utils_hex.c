@@ -6,12 +6,12 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 14:33:30 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:13:03 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 static void	ft_print_hex_of_prefix(t_print *tab)
 {
