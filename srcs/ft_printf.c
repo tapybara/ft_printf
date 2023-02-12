@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 18:13:23 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 19:35:11 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	init_tab(t_print *tab)
 	tab->zero = 0;
 	tab->star = 0;
 	tab->dot = 0;
+	tab->space = 0;
+	tab->plus = 0;
+	tab->prefix = 0;
 	tab->width = 0;
 	tab->prec = 0;
 	tab->is_upper = false;
 	tab->is_negative = 0;
-	tab->prefix = 0;
 }
 
 int	ft_printf(const char *format, ...)

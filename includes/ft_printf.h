@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 15:04:24 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 21:02:07 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ typedef struct s_print
 	int		zero;
 	int		star;
 	int		dot;
+	int		space;
+	int		plus;
+	int		prefix;
 	int		width;
 	int		prec;
 	bool	is_upper;
 	int		is_negative;
-	int		prefix;
 	int		tl;
 }	t_print;
 
@@ -57,5 +59,6 @@ void	ft_print_str_with_flags(t_print *tab, char *str, int len);
 
 bool	is_empty_char_required(t_print *tab, bool num_zero);
 void	fill_the_margin(t_print *tab, int len);
+void	fill_the_margin_base(t_print *tab, int len);
 
 #endif

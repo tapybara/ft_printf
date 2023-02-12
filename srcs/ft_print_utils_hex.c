@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 18:13:03 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 21:02:30 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	ft_print_hex_of_prefix(t_print *tab)
 	if (tab->prefix)
 	{
 		if (tab->is_upper)
-			tab->tl += ft_putstr("0x");
-		else
 			tab->tl += ft_putstr("0X");
+		else
+			tab->tl += ft_putstr("0x");
 	}
 }
 
@@ -48,23 +48,23 @@ void	ft_print_base_with_flags(t_print *tab, unsigned long long num)
 	int	len;
 
 	len = count_base_digits(num, HEXA_BASE);
-	if (tab->prefix)
-		len += 2;
 	if (tab->prec >= len)
 	{
 		tab->prec -= len;
 		tab->width -= tab->prec;
 	}
+	if (tab->prefix)
+		len += 2;
 	if (!tab->dash)
-		fill_the_margin(tab, len);
+		fill_the_margin_base(tab, len);
 	else if (tab->is_negative)
 		tab->tl += ft_putchar('-');
+	ft_print_hex_of_prefix(tab);
 	while (tab->prec--)
 		tab->tl += ft_putchar('0');
-	ft_print_hex_of_prefix(tab);
 	ft_print_ul_to_hex(tab, num);
 	if (tab->dash)
-		fill_the_margin(tab, len);
+		fill_the_margin_base(tab, len);
 }
 
 void	ft_print_ptr(t_print *tab, void *p)

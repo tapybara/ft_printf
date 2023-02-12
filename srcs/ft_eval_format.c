@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 18:13:15 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 19:45:50 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ void	eval_flags(t_print *tab, const char *format, int i)
 		tab->zero = 1;
 }
 
-// Evaluation_Field_Width
-void	eval_width_and_precision(t_print *tab, const char *format, int i)
+static void	count_width_or_prec(t_print *tab, const char *format, int i)
 {
-	if (format[i] == '.')
-		tab->dot = 1;
 	if (!tab->dot)
 	{
 		if (format[i] == '*')
@@ -70,6 +67,20 @@ void	eval_width_and_precision(t_print *tab, const char *format, int i)
 			tab->prec += (format[i] - '0');
 		}
 	}
+}
+
+// Evaluation_Field_Width
+void	eval_width_and_precision(t_print *tab, const char *format, int i)
+{
+	if (format[i] == '.')
+		tab->dot = 1;
+	if (format[i] == '#')
+		tab->prefix = 1;
+	if (format[i] == ' ')
+		tab->space = 1;
+	if (format[i] == '+')
+		tab->plus = 1;
+	count_width_or_prec(tab, format, i);
 }
 
 // eval_start(main)
