@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 18:13:07 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 23:10:18 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	ft_print_nbr_with_flags(t_print *tab, char *nbr, int len)
 		fill_the_margin(tab, len);
 	else if (tab->is_negative)
 		tab->tl += ft_putchar('-');
+	else if (tab->plus)
+		tab->tl += ft_putchar('+');
+	else if (tab->space)
+		tab->tl += ft_putchar(' ');
 	while (tab->prec--)
 		tab->tl += ft_putchar('0');
 	tab->tl += ft_putstr(nbr);

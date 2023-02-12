@@ -6,12 +6,22 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:03:54 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 23:06:53 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 23:09:46 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+void	ft_put_sign(t_print *tab)
+{
+	if (tab->is_negative)
+		tab->tl += ft_putchar('-');
+	if (tab->plus)
+		tab->tl += ft_putchar('+');
+	if (tab->space)
+		tab->tl += ft_putchar(' ');
+}
 
 void	fill_the_margin(t_print *tab, int len)
 {
@@ -24,15 +34,14 @@ void	fill_the_margin(t_print *tab, int len)
 	if (!tab->dash && tab->zero)
 	{
 		margin_char = '0';
-		if (tab->is_negative)
-			tab->tl += ft_putchar('-');
+		ft_put_sign(tab);
 	}
 	else
 		margin_char = ' ';
 	while (margin--)
 		tab->tl += ft_putchar(margin_char);
-	if (tab->is_negative && !tab->zero && !tab->dash)
-		tab->tl += ft_putchar('-');
+	if (!tab->zero && !tab->dash)
+		ft_put_sign(tab);
 }
 
 void	fill_the_margin_base(t_print *tab, int len)
