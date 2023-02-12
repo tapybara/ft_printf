@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:33:29 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 15:24:29 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/12 15:33:20 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ void	ft_print_str(t_print *tab, char *str)
 		return ;
 	len = (int)ft_strlen(str);
 	ft_print_str_with_flags(tab, str, len);
-	// ft_print_nbr_with_flags(tab, str, len);
 }
 
 void	ft_print_str_with_flags(t_print *tab, char *str, int len)
 {
 	int	print_len;
-	
+
 	if (tab->prec < len && tab->dot)
 		len = tab->prec;
 	print_len = len;
