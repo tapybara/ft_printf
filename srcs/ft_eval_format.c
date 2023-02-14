@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 19:45:50 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 20:26:15 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 void	eval_convspec(t_print *tab, const char *format, int i)
 {
-	if (format[i] == '%')
-		tab->tl += ft_putchar('%');
-	else if (format[i] == 'c')
+	if (format[i] == 'c')
 		tab->tl += ft_putchar(va_arg(tab->args, int));
 	else if (format[i] == 's')
 		ft_print_str(tab, va_arg(tab->args, char *));
@@ -34,6 +32,8 @@ void	eval_convspec(t_print *tab, const char *format, int i)
 	}
 	else if (format[i] == 'p')
 		ft_print_ptr(tab, va_arg(tab->args, void *));
+	else if (format[i] == '%')
+		ft_print_str(tab, "%");
 }
 
 // Evaluation_Flag

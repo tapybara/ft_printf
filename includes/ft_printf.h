@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 19:01:37 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 20:26:30 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdbool.h>
 
-# define CONVERT_SPEC "cspdiuxX%%"
+# define CONVERT_SPEC "cspdiuxX%"
 # define HEXA_BASE 16
 
 typedef struct s_print
