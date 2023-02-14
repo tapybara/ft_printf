@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 19:10:09 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 19:23:14 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int	count_base_digits(unsigned long long num, unsigned long long base)
 
 void	ft_print_nbr_with_flags(t_print *tab, char *nbr, int len)
 {
-	if (tab->prec >= (int)ft_strlen(nbr))
+	if (tab->prec >= len)
 	{
-		tab->prec -= (int)ft_strlen(nbr);
+		tab->prec -= len;
 		tab->width -= tab->prec;
 	}
+	else
+		tab->prec = 0;
 	if (!tab->dash)
 		fill_the_margin(tab, len);
 	else if (tab->is_negative)
