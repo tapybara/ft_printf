@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 00:40:31 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 01:53:10 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ void	ft_print_base_with_flags(t_print *tab, unsigned long long num)
 	if (tab->prefix)
 		len += 2;
 	if (!tab->dash)
-		fill_the_margin_base(tab, len);
+		fill_the_margin(tab, len);
 	else if (tab->is_negative)
 		tab->tl += ft_putchar('-');
+	ft_print_hex_of_prefix(tab);
 	if (tab->is_empty_char)
 		tab->tl += ft_putstr("");
 	else
 	{
-		ft_print_hex_of_prefix(tab);
 		while (tab->prec--)
 			tab->tl += ft_putchar('0');
 		ft_print_ul_to_hex(tab, num);
 	}
 	if (tab->dash)
-		fill_the_margin_base(tab, len);
+		fill_the_margin(tab, len);
 }
 
 void	ft_print_ptr(t_print *tab, void *p)
