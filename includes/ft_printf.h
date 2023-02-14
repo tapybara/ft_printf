@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 21:26:33 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 01:35:40 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_print_ptr(t_print *tab, void *p);
 void	ft_print_hex(t_print *tab, unsigned int num);
 int		ft_putchar(int c);
 int		ft_putstr(char *str);
+void	ft_print_char(t_print *tab, int c);
 void	ft_print_str(t_print *tab, char *str);
 void	ft_print_str_with_flags(t_print *tab, char *str, int len);
 

@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 00:19:26 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 01:32:48 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	eval_convspec(t_print *tab, const char *format, int i)
 {
 	if (format[i] == 'c')
-		tab->tl += ft_putchar(va_arg(tab->args, int));
+		ft_print_char(tab, va_arg(tab->args, int));
 	else if (format[i] == 's')
 		ft_print_str(tab, va_arg(tab->args, char *));
 	else if (format[i] == 'd' || format[i] == 'i')
