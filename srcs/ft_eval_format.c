@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 22:12:28 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 00:19:26 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,25 @@ static void	eval_asterisk(t_print *tab, const char *format, int i)
 	index = 0;
 	if (format[i] == '*')
 	{
-		star_str = ft_itoa(va_arg(tab->args, int));
-		while (star_str[index] != '\0')
+		if (!tab->dot)
 		{
-			eval_flags(tab, star_str, index);
-			index++;
+			star_str = ft_itoa(va_arg(tab->args, int));
+			while (star_str[index] != '\0')
+			{
+				eval_flags(tab, star_str, index);
+				index++;
+			}
+			free(star_str);
 		}
-		free(star_str);
+		else
+		{
+			tab->prec = va_arg(tab->args, int);
+			if (tab->prec < 0)
+			{
+				tab->dot = 0;
+				tab->prec = 0;
+			}
+		}
 	}
 }
 
@@ -80,18 +92,21 @@ void	count_width_and_precision(t_print *tab, const char *format, int i)
 // Evaluation_Flag
 void	eval_flags(t_print *tab, const char *format, int i)
 {
-	if (format[i] == '-')
-		tab->dash = 1;
-	else if (format[i] == '0' && !tab->width && !tab->dot)
-		tab->zero = 1;
-	if (format[i] == '.')
-		tab->dot = 1;
-	if (format[i] == '#')
-		tab->prefix = 1;
-	if (format[i] == ' ')
-		tab->space = 1;
-	if (format[i] == '+')
-		tab->plus = 1;
+	if (!tab->dot)
+	{
+		if (format[i] == '.')
+			tab->dot = 1;
+		else if (format[i] == '#')
+			tab->prefix = 1;
+		else if (format[i] == ' ')
+			tab->space = 1;
+		else if (format[i] == '+')
+			tab->plus = 1;
+		else if (format[i] == '-')
+			tab->dash = 1;
+		else if (format[i] == '0' && !tab->width)
+			tab->zero = 1;
+	}
 	count_width_and_precision(tab, format, i);
 }
 

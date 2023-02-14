@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:33:29 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 19:59:29 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 00:22:23 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ int	ft_putstr(char *str)
 	return (write(STDOUT_FILENO, str, ft_strlen(str)));
 }
 
-void	ft_print_str(t_print *tab, char *str)
-{
-	int	len;
-
-	if (!str)
-	{
-		tab->tl += ft_putstr("(null)");
-		return ;
-	}
-	len = (int)ft_strlen(str);
-	ft_print_str_with_flags(tab, str, len);
-}
-
 void	ft_print_str_with_flags(t_print *tab, char *str, int len)
 {
 	int	print_len;
@@ -49,4 +36,14 @@ void	ft_print_str_with_flags(t_print *tab, char *str, int len)
 		tab->tl += ft_putchar(*str++);
 	if (tab->dash)
 		fill_the_margin(tab, len);
+}
+
+void	ft_print_str(t_print *tab, char *str)
+{
+	int	len;
+
+	if (!str)
+		str = "(null)";
+	len = (int)ft_strlen(str);
+	ft_print_str_with_flags(tab, str, len);
 }

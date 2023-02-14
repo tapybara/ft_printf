@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 19:23:14 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 00:25:52 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	ft_print_uint(t_print *tab, unsigned int num)
 	char	*nbr;
 	int		len;
 
-	if (is_empty_char_required(tab, !num))
-		tab->is_empty_char = true;
 	nbr = ft_uitoa(num);
 	len = (int)ft_strlen(nbr);
 	if (is_empty_char_required(tab, !num))
