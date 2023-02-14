@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 19:01:31 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 20:50:38 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] != '%')
 			ret += write(1, &format[i++], sizeof(char));
 		else
-			i = eval_start(tab, format, i);
+			i = eval_start(tab, format, i + 1);
 	}
 	va_end(tab->args);
 	ret += tab->tl;

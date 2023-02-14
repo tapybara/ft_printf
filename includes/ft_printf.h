@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 20:26:30 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 21:26:33 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_printf(const char *format, ...);
 int		eval_start(t_print *tab, const char *format, int i);
 int		eval_start(t_print *tab, const char *format, int i);
 void	eval_flags(t_print *tab, const char *format, int i);
-void	eval_width_and_precision(t_print *tab, const char *format, int i);
+void	count_width_and_precision(t_print *tab, const char *format, int i);
 void	eval_convspec(t_print *tab, const char *format, int i);
 
 int		count_base_digits(unsigned long long num, unsigned long long base);
