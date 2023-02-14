@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:03:54 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 23:19:14 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 19:02:24 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	fill_the_margin_base(t_print *tab, int len)
 
 bool	is_empty_char_required(t_print *tab, bool num_zero)
 {
-	if (num_zero && !tab->width && tab->dot && !tab->prec)
-	{
-		tab->tl += ft_putstr("");
+	if (num_zero && tab->dot && !tab->prec)
 		return (true);
-	}
 	return (false);
 }

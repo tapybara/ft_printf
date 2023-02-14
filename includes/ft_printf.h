@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 21:02:07 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 19:01:37 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_print
 	int		width;
 	int		prec;
 	bool	is_upper;
+	bool	is_empty_char;
 	int		is_negative;
 	int		tl;
 }	t_print;

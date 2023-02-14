@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 23:17:46 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 19:10:09 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	ft_print_nbr_with_flags(t_print *tab, char *nbr, int len)
 		tab->tl += ft_putchar(' ');
 	while (tab->prec--)
 		tab->tl += ft_putchar('0');
-	tab->tl += ft_putstr(nbr);
+	if (tab->is_empty_char)
+		tab->tl += ft_putstr("");
+	else
+		tab->tl += ft_putstr(nbr);
 	if (tab->dash)
 		fill_the_margin(tab, len);
 }
@@ -54,8 +57,6 @@ void	ft_print_nbr(t_print *tab, int num)
 	int		len;
 	long	lnum;
 
-	if (is_empty_char_required(tab, !num))
-		return ;
 	lnum = (long)num;
 	if (num < 0)
 	{
@@ -64,6 +65,11 @@ void	ft_print_nbr(t_print *tab, int num)
 	}
 	nbr = ft_ltoa(lnum);
 	len = (int)ft_strlen(nbr);
+	if (is_empty_char_required(tab, !num))
+	{
+		tab->is_empty_char = true;
+		len = 0;
+	}
 	ft_print_nbr_with_flags(tab, nbr, len);
 	free(nbr);
 }
@@ -74,9 +80,14 @@ void	ft_print_uint(t_print *tab, unsigned int num)
 	int		len;
 
 	if (is_empty_char_required(tab, !num))
-		return ;
+		tab->is_empty_char = true;
 	nbr = ft_uitoa(num);
 	len = (int)ft_strlen(nbr);
+	if (is_empty_char_required(tab, !num))
+	{
+		tab->is_empty_char = true;
+		len = 0;
+	}
 	ft_print_nbr_with_flags(tab, nbr, len);
 	free(nbr);
 }

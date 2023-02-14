@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/12 19:35:11 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/14 19:01:31 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_tab(t_print *tab)
 	tab->width = 0;
 	tab->prec = 0;
 	tab->is_upper = false;
+	tab->is_empty_char = false;
 	tab->is_negative = 0;
 }
 
