@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/14 20:50:38 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 20:44:44 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void	init_tab(t_print *tab)
 	tab->prefix = 0;
 	tab->width = 0;
 	tab->prec = 0;
+	tab->is_negative = 0;
 	tab->is_upper = false;
 	tab->is_empty_char = false;
-	tab->is_negative = 0;
+	tab->is_warning = false;
 }
 
 int	ft_printf(const char *format, ...)
@@ -50,7 +51,10 @@ int	ft_printf(const char *format, ...)
 			i = eval_start(tab, format, i + 1);
 	}
 	va_end(tab->args);
-	ret += tab->tl;
+	if (tab->is_warning)
+		ret = -1;
+	else
+		ret += tab->tl;
 	free (tab);
 	return (ret);
 }

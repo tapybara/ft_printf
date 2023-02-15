@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 19:03:43 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 20:41:21 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,10 @@ int	eval_start(t_print *tab, const char *format, int i)
 		i++;
 	}
 	if (format[i] == '\0')
-		return (-1);
+	{
+		tab->is_warning = true;
+		return (ft_strlen(format));
+	}
 	eval_convspec(tab, format, i);
 	return (++i);
 }
