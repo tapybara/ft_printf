@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 20:44:59 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 22:02:35 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ typedef struct s_print
 	int		prefix;
 	int		width;
 	int		prec;
-	int		is_negative;
+	bool	is_negative;
 	bool	is_upper;
 	bool	is_empty_char;
 	bool	is_warning;
+	bool	is_print_full;
 	int		tl;
 }	t_print;
 
@@ -54,8 +55,8 @@ void	ft_print_ul_to_hex(t_print *tab, unsigned long long num);
 void	ft_print_base_with_flags(t_print *tab, unsigned long long num, int len);
 void	ft_print_ptr(t_print *tab, void *p);
 void	ft_print_hex(t_print *tab, unsigned int num);
-int		ft_putchar(int c);
-int		ft_putstr(char *str);
+int		ft_putchar(t_print *tab, int c);
+int		ft_putstr(t_print *tab, char *str);
 void	ft_print_char(t_print *tab, int c);
 void	ft_print_str(t_print *tab, char *str);
 void	ft_print_str_with_flags(t_print *tab, char *str, int len);

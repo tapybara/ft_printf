@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 19:09:16 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 22:01:53 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	ft_print_hex_of_prefix(t_print *tab)
 	if (tab->prefix)
 	{
 		if (tab->is_upper)
-			tab->tl += ft_putstr("0X");
+			tab->tl += ft_putstr(tab, "0X");
 		else
-			tab->tl += ft_putstr("0x");
+			tab->tl += ft_putstr(tab, "0x");
 	}
 }
 
@@ -35,12 +35,12 @@ void	ft_print_ul_to_hex(t_print *tab, unsigned long long num)
 	else if (num >= 10)
 	{
 		if (tab->is_upper)
-			tab->tl += ft_putchar(((int)num - 10) + 'A');
+			tab->tl += ft_putchar(tab, ((int)num - 10) + 'A');
 		else
-			tab->tl += ft_putchar(((int)num - 10) + 'a');
+			tab->tl += ft_putchar(tab, ((int)num - 10) + 'a');
 	}
 	else
-		tab->tl += ft_putchar((int)num + '0');
+		tab->tl += ft_putchar(tab, (int)num + '0');
 }
 
 void	ft_print_base_with_flags(t_print *tab, unsigned long long num, int len)
@@ -57,14 +57,14 @@ void	ft_print_base_with_flags(t_print *tab, unsigned long long num, int len)
 	if (!tab->dash)
 		fill_the_margin(tab, len);
 	else if (tab->is_negative)
-		tab->tl += ft_putchar('-');
+		tab->tl += ft_putchar(tab, '-');
 	ft_print_hex_of_prefix(tab);
 	if (tab->is_empty_char)
-		tab->tl += ft_putstr("");
+		tab->tl += ft_putstr(tab, "");
 	else
 	{
 		while (tab->prec--)
-			tab->tl += ft_putchar('0');
+			tab->tl += ft_putchar(tab, '0');
 		ft_print_ul_to_hex(tab, num);
 	}
 	if (tab->dash)

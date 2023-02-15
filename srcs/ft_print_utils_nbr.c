@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:32:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 00:25:52 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 22:01:53 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ void	ft_print_nbr_with_flags(t_print *tab, char *nbr, int len)
 	if (!tab->dash)
 		fill_the_margin(tab, len);
 	else if (tab->is_negative)
-		tab->tl += ft_putchar('-');
+		tab->tl += ft_putchar(tab, '-');
 	else if (tab->plus)
-		tab->tl += ft_putchar('+');
+		tab->tl += ft_putchar(tab, '+');
 	else if (tab->space)
-		tab->tl += ft_putchar(' ');
+		tab->tl += ft_putchar(tab, ' ');
 	while (tab->prec--)
-		tab->tl += ft_putchar('0');
+		tab->tl += ft_putchar(tab, '0');
 	if (tab->is_empty_char)
-		tab->tl += ft_putstr("");
+		tab->tl += ft_putstr(tab, "");
 	else
-		tab->tl += ft_putstr(nbr);
+		tab->tl += ft_putstr(tab, nbr);
 	if (tab->dash)
 		fill_the_margin(tab, len);
 }
@@ -62,7 +62,7 @@ void	ft_print_nbr(t_print *tab, int num)
 	lnum = (long)num;
 	if (num < 0)
 	{
-		tab->is_negative = 1;
+		tab->is_negative = true;
 		lnum *= -1;
 	}
 	nbr = ft_ltoa(lnum);

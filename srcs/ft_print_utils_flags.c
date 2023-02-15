@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:03:54 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 01:56:34 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 22:01:18 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 static void	ft_put_sign(t_print *tab)
 {
 	if (tab->is_negative)
-		tab->tl += ft_putchar('-');
+		tab->tl += ft_putchar(tab, '-');
 	if (tab->plus)
-		tab->tl += ft_putchar('+');
+		tab->tl += ft_putchar(tab, '+');
 	if (tab->space)
-		tab->tl += ft_putchar(' ');
+		tab->tl += ft_putchar(tab, ' ');
 }
 
 void	fill_the_margin(t_print *tab, int len)
@@ -41,7 +41,7 @@ void	fill_the_margin(t_print *tab, int len)
 	else
 		margin_char = ' ';
 	while (margin--)
-		tab->tl += ft_putchar(margin_char);
+		tab->tl += ft_putchar(tab, margin_char);
 	if ((!tab->zero || tab->dot) && !tab->dash)
 		ft_put_sign(tab);
 }
