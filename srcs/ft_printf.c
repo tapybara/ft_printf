@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:17:42 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 22:05:33 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 22:57:39 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_printf(const char *format, ...)
 	int		i;
 	int		ret;
 
-	tab = (t_print *)malloc(sizeof(t_print));
+	tab = (t_print *)ft_calloc(1, sizeof(t_print));
 	if (!tab)
 		return (-1);
 	tab->tl = 0;
