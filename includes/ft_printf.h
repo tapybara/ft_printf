@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 22:02:35 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 23:02:48 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_print
 	va_list	args;
 	int		dash;
 	int		zero;
-	int		star;
 	int		dot;
 	int		space;
 	int		plus;
