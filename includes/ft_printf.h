@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:59:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 01:55:46 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 19:09:37 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_print_nbr_with_flags(t_print *tab, char *nbr, int len);
 void	ft_print_nbr(t_print *tab, int num);
 void	ft_print_uint(t_print *tab, unsigned int num);
 void	ft_print_ul_to_hex(t_print *tab, unsigned long long num);
-void	ft_print_base_with_flags(t_print *tab, unsigned long long num);
+void	ft_print_base_with_flags(t_print *tab, unsigned long long num, int len);
 void	ft_print_ptr(t_print *tab, void *p);
 void	ft_print_hex(t_print *tab, unsigned int num);
 int		ft_putchar(int c);

@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 19:05:56 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 19:09:16 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_print_ul_to_hex(t_print *tab, unsigned long long num)
 		tab->tl += ft_putchar((int)num + '0');
 }
 
-void	ft_print_base_with_flags(t_print *tab, unsigned long long num)
+void	ft_print_base_with_flags(t_print *tab, unsigned long long num, int len)
 {
 	if (tab->prec >= len)
 	{
@@ -84,7 +84,7 @@ void	ft_print_ptr(t_print *tab, void *p)
 		tab->is_empty_char = true;
 		len = 0;
 	}
-	ft_print_base_with_flags(tab, ullnum);
+	ft_print_base_with_flags(tab, ullnum, len);
 }
 
 void	ft_print_hex(t_print *tab, unsigned int num)
@@ -99,5 +99,5 @@ void	ft_print_hex(t_print *tab, unsigned int num)
 		len = 0;
 	}
 	ullnum = (unsigned long long)num;
-	ft_print_base_with_flags(tab, ullnum);
+	ft_print_base_with_flags(tab, ullnum, len);
 }
