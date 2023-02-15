@@ -6,7 +6,7 @@
 #    By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 23:05:34 by okuyamataka       #+#    #+#              #
-#    Updated: 2023/02/14 19:11:20 by okuyamataka      ###   ########.fr        #
+#    Updated: 2023/02/15 22:39:31 by okuyamataka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ bonus: all
 
 try:
 	make
-	$(CC) $(CFLAGS) -I${INCLUDE_DIR} -I$(LIBFT_DIR) $(NAME) $(SRCS_DIR)main.c
+	$(CC) $(CFLAGS) -g -fsanitize=address -fsanitize=undefined -I${INCLUDE_DIR} -I$(LIBFT_DIR) $(NAME) $(SRCS_DIR)main.c
 	./a.out
 	rm -rf ./a.out
 
