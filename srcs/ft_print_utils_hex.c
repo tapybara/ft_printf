@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:34:03 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 01:53:10 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 19:05:56 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,6 @@ void	ft_print_ul_to_hex(t_print *tab, unsigned long long num)
 
 void	ft_print_base_with_flags(t_print *tab, unsigned long long num)
 {
-	int	len;
-
-	len = count_base_digits(num, HEXA_BASE);
-	if (is_empty_char_required(tab, !num))
-	{
-		tab->is_empty_char = true;
-		len = 0;
-	}
 	if (tab->prec >= len)
 	{
 		tab->prec -= len;
@@ -82,16 +74,30 @@ void	ft_print_base_with_flags(t_print *tab, unsigned long long num)
 void	ft_print_ptr(t_print *tab, void *p)
 {
 	unsigned long long	ullnum;
+	int					len;
 
 	tab->prefix = 1;
 	ullnum = (unsigned long long)p;
+	len = count_base_digits(ullnum, HEXA_BASE);
+	if (is_empty_char_required(tab, !ullnum))
+	{
+		tab->is_empty_char = true;
+		len = 0;
+	}
 	ft_print_base_with_flags(tab, ullnum);
 }
 
 void	ft_print_hex(t_print *tab, unsigned int num)
 {
 	unsigned long long	ullnum;
+	int					len;
 
+	len = count_base_digits(num, HEXA_BASE);
+	if (is_empty_char_required(tab, !num))
+	{
+		tab->is_empty_char = true;
+		len = 0;
+	}
 	ullnum = (unsigned long long)num;
 	ft_print_base_with_flags(tab, ullnum);
 }

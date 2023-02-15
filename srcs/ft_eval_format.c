@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:49:26 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/15 01:32:48 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/02/15 19:03:43 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ static void	eval_asterisk(t_print *tab, const char *format, int i)
 		{
 			star_str = ft_itoa(va_arg(tab->args, int));
 			while (star_str[index] != '\0')
-			{
-				eval_flags(tab, star_str, index);
-				index++;
-			}
+				eval_flags(tab, star_str, index++);
 			free(star_str);
 		}
 		else
